@@ -3,8 +3,8 @@
 {% block content %}
 <form class="row g-3">
   <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">product</label>
-    <input type="email" class="form-control" id="product_name" name ="product_name">
+    <label for="text" class="form-label">product</label>
+    <input type="text" class="form-control" id="product_name" name ="product_name">
   </div>
   <div class="col-md-3">
     <label for="min_price" class="form-label">min price</label>
@@ -18,9 +18,9 @@
     <label for="inputState" class="form-label">category</label>
     <select id="category" class="form-select" name = "category">
       <option disabled>Choose</option>
-      <option>electronics</option>
-      <option>clothes</option>
-      <option>food</option>
+      {% for category in categories %}
+          <option value ="{{category.id}}">{{category.name}}</option>
+      {% endfor %}
     </select>
   </div>
   <div class="col-6">
@@ -40,6 +40,8 @@
         <img src="https://fantasyislandtoys.com/cdn/shop/products/toni10000575_820x377.jpg?v=1693497694" class="card-img-top" alt="https://fantasyislandtoys.com/cdn/shop/products/toni10000575_820x377.jpg?v=1693497694">
         <div class="card-body">
           <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text fw-bold">{{product.price}} $ </p>
+
           <p class="card-text">{{product.description}}</p>
           <a href="" class="btn btn-primary">Go somewhere</a>
         </div>
